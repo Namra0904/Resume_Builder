@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    
+    <link rel="icon" href="images/op-removebg-preview.png" type="images/x-icon">
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <style>
+      .cards-wrapper {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        min-height: 200px; /* Set a minimum height for the carousel items */
+
+      }
+      .card-text{
+          margin-bottom: 5px!important;
+      }
+      .card{
+          border: none !important;
+
+      }
+
+     
+      .offcanvas.show {
+          background-color: #f8f9fa; /* Background color for the offcanvas menu */
+          padding: 0px; /* Padding inside the offcanvas menu */
+          width: 300px !important; /* Adjust the width as needed */
+          
+      }
+      
+      .offcanvas-header {
+          background-color: #e9ecef; /* Background color for the offcanvas header */
+          border-bottom: 1px solid #ccc; /* Border at the bottom of the offcanvas header */
+          padding: 10px 20px; /* Padding inside the offcanvas header */
+      }
+      
+      .offcanvas-title {
+          color: #000; /* Text color for the offcanvas title */
+          font-size: 1.5rem; /* Font size for the offcanvas title */
+          font-weight: 600;
+          margin-bottom: 0; /* Remove default margin at the bottom */
+      }
+      
+      .offcanvas-body {
+          padding: 10px 15px; /* Padding inside the offcanvas body */
+      }
+      
+      .dropdown-menu {
+          background-color: #f8f9fa; /* Background color for dropdown menus */
+          border: 1px solid #ccc; /* Border for dropdown menus */
+          border-radius: 5px; /* Border radius for dropdown menus */
+      }
+      
+      .dropdown-item {
+          color: #000; /* Text color for dropdown items */
+      }
+      
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+          background-color: #e9ecef; /* Background color for dropdown items on hover/focus */
+
+      }
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        #h1 {
+            font-weight:700;
+            margin: 0;
+        }
+        
+        #h2 {
+            text-align: center;
+        }
+        
+        .p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+        }
+        
+        .span {
+            font-size: 12px;
+        }
+        
+        .a {
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+        
+        .button {
+            border-radius: 20px;
+            border: 1px solid #0d6efd;
+            background-color: #0d6efd;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+        
+        .button:active {
+            transform: scale(0.95);
+        }
+        
+        .button:focus {
+            outline: none;
+        }
+        
+        .button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+        
+        form {
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+        
+        input {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
+        
+        .container1 {
+            background-color: #fff;
+            border-radius: 10px;
+              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                    0 10px 10px rgba(0,0,0,0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;    
+            max-width: 100%;
+            min-height: 400px;
+        }
+        
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .container1.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+        }
+        
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .container1.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: show 0.6s;
+        }
+        
+        @keyframes show {
+            0%, 49.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+            
+            50%, 100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+        
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+        
+        .container1.right-panel-active .overlay-container{
+            transform: translateX(-100%);
+        }
+        
+        .overlay {
+            background: #0d6efd!important;
+            background: -webkit-linear-gradient(to right, #0d6efd, #0d6efd);
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #FFFFFF;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+              transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .container1.right-panel-active .overlay {
+              transform: translateX(50%);
+        }
+        
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+        
+        .container1.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+        
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+        
+        .container1.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+        
+        .social-container {
+            margin: 20px 0;
+        }
+        
+        .social-container a {
+            border: 1px solid #DDDDDD;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+        }
+        .modal-dialog {
+            max-width: 700px; /* Change this value to increase/decrease width */
+          
+        }
+        .modal-content {
+            background: none;
+            box-shadow: none;
+            border:none;
+        }
+    
+  </style>
+  </head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top bg-white">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <div>
+                <a href="#" class="navbar-brand fs-3 ms-2 me-1">
+                    <i class="fa-regular fa-file-lines fa-xl" style="color:#0d6efd;"></i>       
+                    <!-- <img src="images/logo1.png" class="border"height="50px"/> -->
+                </a>
+            </div>
+            <div class="text-black fs-2">
+                <b style="font-weight:bold" class="">Resume<b style="color:#0d6efd">Build</b></b>
+            </div>
+        </div>
+        <Button type="button" class="navbar-toggler fs-2 me-3" data-bs-toggle="offcanvas"
+            data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
+            <span> <i class="fa fa-bars" style="color:black"></i> </span>
+        </Button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav  ms-auto">
+                    <li class="nav-item me-2 ">
+                        <a href="index.html" class="nav-link"> <b>Home</b> </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="Resume_Templates.html" class="nav-link"><b> Resume Templates</b></a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="cover_letter.html" class="nav-link"><b>Cover Letters</b></a>
+                    </li>
+                    <li class="nav-item me-2 dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><b>Career Blog</b></a>
+                      <ul class="dropdown-menu" style="border: 1px solid #ccc; border-radius: 5px;">
+                          <li><a class="dropdown-item" href="#">All Articles</a></li>
+                          <li><a class="dropdown-item" href="#">Resume and CV Writing</a></li>
+                          <li><a class="dropdown-item" href="#">Cover Letter Writing</a></li>
+                          <li><a class="dropdown-item" href="#">Examples</a></li>
+                          <li><a class="dropdown-item" href="#">Personal Development</a></li>
+                          <li><a class="dropdown-item" href="#">Inspiring Stories</a></li>
+                          <li><a class="dropdown-item" href="#">Interviews & Find a Job</a></li>
+                      </ul>
+                  </li>
+                    <li class="nav-item me-2">
+                        <a href="About.html" class="nav-link active"><b>About us</b></a>
+                    </li>
+                    <li class="nav-item me-2 dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><b>EN US</b></a>
+                      <ul class="dropdown-menu" style="border: 1px solid #ccc; border-radius: 5px;">
+                          <li><a class="dropdown-item" href="#">Dansk<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                          <li><a class="dropdown-item" href="#">Deutsch<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                          <li><a class="dropdown-item" href="#" style="color:#0d6efd">English US</a></li>
+                          <li><a class="dropdown-item" href="#">English UK<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                          <li><a class="dropdown-item" href="#">Espanol<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                          
+                      </ul>
+                  </li>
+                  <li class="nav-item me-2">
+                    <!-- <button Class="btn btn-outline-danger"data-bs-target="#namra" data-bs-toggle="modal" class="nav-link">Login
+                    </button> -->
+                    <button class="btn btn-outline-danger btn-sm" data-bs-target="#namra" data-bs-toggle="modal" class="nav-link"><b>Login</b></button>
+
+                    <div class="modal" id="namra"  style="z-index: 2000;">
+                        <div class="modal-dialog  modal-dialog-centered" >
+                          <div class="modal-content">
+
+                            
+                            <div class="modal-body">
+                                
+                                <div class="container1" id="container">
+                                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" ></button> -->
+                                    <div class="form-container sign-up-container">
+                                        <form action="#">
+                                            <h2 id="h1">Create Account</h2>
+                                            <div class="social-container">
+                                                <a href="#" class="social a"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-google-plus-g"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-linkedin-in"></i></a>
+                                            </div>
+                                            <span class="span">or use your email for registration</span>
+                                            <input type="text" placeholder="Name" />
+                                            <input type="email" placeholder="Email" />
+                                            <input type="password" placeholder="Password" />
+                                            <button class="button mt-1">Sign Up</button>
+                                        </form>
+                                    </div>
+                                    <div class="form-container sign-in-container">
+                                        <form action="#">
+                                            <h2 id="h1">Sign in</h2>
+                                            <div class="social-container">
+                                                <a href="#" class="social a"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-google-plus-g"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-linkedin-in"></i></a>
+                                            </div>
+                                            <span class="span">or use your account</span>
+                                            <input type="email" placeholder="Email" />
+                                            <input type="password" placeholder="Password" />
+                                            <a href="#">Forgot your password?</a>
+                                            <button class="button mt-2">Login</button>
+                                        </form>
+                                    </div>
+                                    <div class="overlay-container">
+                                        <div class="overlay">
+                                            <div class="overlay-panel overlay-left">
+                                                <h1 is="h1">Welcome Back!</h1>
+                                                <p class="p">To keep connected with us please login with your personal info</p>
+                                                <button class="ghost button" id="signIn">Login</button>
+                                            </div>
+                                            <div class="overlay-panel overlay-right">
+                                                <h1 id="h1">Hello, Friend!</h1>
+                                                <p class="p">Enter your personal details and start journey with us</p>
+                                                <button class="ghost button" id="signUp">Sign Up</button>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid" style="margin-top:80px">
+        <div class="container" style="">
+            <div style="font-size:2.1rem"><b>Origin</b></div>
+            <div class="mt-3">
+                <p style="font-size:0.98rem"><b>Birth of a project</b></p>
+                <div class="row">
+                    <div class="col-md">
+                        <p style="text-align:justify;font-size:0.95rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Resume Builder began in 2014 when Andrei, Cristian, and Stefan noticed a common problem among several of their contacts. Despite having extensive work experience and impressive skill sets, these individuals didn’t know how to showcase their talents with a professional resume and cover letter. Sensing an opportunity to help others with their job search, the three of them joined forces in exploring possible solutions as part of a university project.</p>
+                    </div>
+                </div>
+                <div class="mt-3" data-aos="fade-right" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/students.jpg" height="330px" width="560px" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-6">
+                <p style="font-size:0.98rem"><b>Idea</b></p>
+                    <div>
+                        <p style="text-align:justify;font-size:0.95rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">By combining their respective backgrounds in technology, marketing, and design, the three came up with the idea of an intuitive, web-based tool that would make it as simple as possible to produce an eye-catching resume.</p>
+                      <img src="images/ss.png" height="50px" class="d-block mx-auto">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <p style="font-size:0.98rem">
+                        <b>Outcome</b>
+                    </p>
+                    <div>
+                        <p style="text-align:justify;font-size:0.95rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">After a rigorous development and testing process, the outcome was an online resume builder that combines functionality and aesthetics to maximize users' chances of being invited for job interviews. The application first launched in February 2016, and it quickly gained international attention after being featured in Times, Forbes and Business Insider.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid mt-3 text-white bg-dark">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mt-3 mb-5">
+                <div class="ms-2 ps-1 ">
+                    <b style="font-size:2rem">The Team</b>
+                    <p style="font-size:0.9rem" class="pt-2">We have always believed that co-creation with users and recruiters is the key to our success. By soliciting the feedback of both groups, we ensure that users' and recruiters' needs continually align with our products. Not only does this allow us to improve the current application, but it has led to several ideas for additional products and services.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid  mt-5">
+        <div class="row ms-3 me-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/stefan.jpg" class="rounded-circle " height="110px"/>
+                <div class="mt-2 pt-4 ps-4" 
+                data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <b style="font-size:0.9rem">Stefan Polexe</b>
+                    <p style="font-size:0.9rem">CEO & Co-Founder</p>
+                </div>
+                </div>
+            <div style="font-size:0.88rem" class=""><p>„Many people wonder why this Transylvanian is awake at night… All we know is that by dawn, he disappeared, leaving behind only an empty coffee mug and mysterious new updates.”</p></div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/andrei.jpg" class="rounded-circle " height="110px"/>
+                    <div class="mt-2 pt-4 ps-4" 
+                    data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                        <b style="font-size:0.9rem">Andrei Kurtuy</b>
+                        <p style="font-size:0.9rem">CCO & Co-founder</p>
+                    </div>
+                    </div>
+                <div style="font-size:0.88rem" class=""><p>„An avid marketer, researcher, and bookworm at heart. He loves reading biographies of great people and running as a form of meditation.”</p></div>
+           
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row ms-3 me-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/cristian.jpg" class="rounded-circle " height="110px"/>
+                <div class="mt-2 pt-4 ps-4"
+                data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <b style="font-size:0.9rem">Cristian Letai</b>
+                    <p style="font-size:0.9rem">CDO/Chief of Joy & Co-Founder</p>
+                </div>
+                </div>
+            <div style="font-size:0.88rem"><p>„A badass visual designer who never misses a chance to throw in some nerdy PUNchlines during creative meetings. Besides his undying love for Star Wars, he cares about the environment and sustainability.”</p></div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/frederik.jpeg" class="rounded-circle " height="110px"/>
+                    <div class="mt-2 pt-4 ps-4"
+                    data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                        <b style="font-size:0.9rem">Frederik Smal</b>
+                        <p style="font-size:0.9rem">UX Product Owner</p>
+                    </div>
+                    </div>
+                <div style="font-size:0.88rem"><p>„An art lover and designer obsessed with making things work better. When he is not designing products or processes, he is likely cooking or sitting in a gallery in front of Rothko’s paintings. He is desperate to learn to play the piano.”</p></div>
+           
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row ms-3 me-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2 "><img src="images/soren.jpg" class="rounded-circle " height="110px"/>
+                <div class="mt-2 pt-4 ps-4"
+                data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <b style="font-size:0.9rem">Søren Østerbye</b>
+                    <p style="font-size:0.9rem">Creative Director</p>
+                </div>
+                </div>
+            <div style="font-size:0.88rem"><p>„After falling in love with MS.Paint at the age of 7, he has moved on to other programs such as Illustrator, Cinema 4D, and Kerbal Space Program. Creativity through software is his thing.”</p></div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/timea-2.jpg" class="rounded-circle " height="110px"/>
+                    <div class="mt-2 pt-4 ps-4"
+                    data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                        <b style="font-size:0.9rem">Timea Kiss</b>
+                        <p style="font-size:0.9rem">Tech Lead</p>
+                    </div>
+                    </div>
+                <div style="font-size:0.88rem"><p>„An absolute beer geek, architecture lover, and unstoppable traveler. She can be found lingering around high places like mountains or skyscrapers if she is not writing code.”</p></div>
+           
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row ms-3 me-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/urte.jpg" class="rounded-circle " height="110px"/>
+                <div class="mt-2 pt-4 ps-4"
+                data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <b style="font-size:0.9rem">Urte Ciegyte</b>
+                    <p style="font-size:0.9rem">Office Manager</p>
+                </div>
+                </div>
+            <div style="font-size:0.88rem"><p>„A fanatic of structure and orderliness, she ensures the daily smooth running of our workplace. If not at the office, Urte can be seen exploring the city with her loyal sidekick, Dobby the doggo..”</p></div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/stefania.jpg" class="rounded-circle " height="110px"/>
+                    <div class="mt-2 pt-4 ps-4"
+                    data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                        <b style="font-size:0.9rem">Stefania Popescu</b>
+                        <p style="font-size:0.9rem">Junior Developer</p>
+                    </div>
+                    </div>
+                <div style="font-size:0.88rem"><p>„Always looking to learn, she embarked on a new adventure and made a career change to become a Software Developer. She enjoys cooking, outdoor walks, and taking pictures of city views.”</p></div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row ms-3 me-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/romain.jpg" class="rounded-circle " height="110px"/>
+                <div class="mt-2 pt-4 ps-4"
+                data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <b style="font-size:0.9rem">Romain Pennel</b>
+                    <p style="font-size:0.9rem">Customer Support Associate</p>
+                </div>
+                </div>
+            <div style="font-size:0.88rem"><p>„With a people-first approach, he focuses on offering excellent support to users. He also facilitates the development team's work by improving internal processes and making each member feel heard. He likes to go crate-digging to expand his record collection.”</p></div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/claudia.jpg" class="rounded-circle " height="110px"/>
+                    <div class="mt-2 pt-4 ps-4"
+                    data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                        <b style="font-size:0.9rem">Clàudia Mateu Vidal</b>
+                        <p style="font-size:0.9rem">Social Media Copywriter</p>
+                    </div>
+                    </div>
+                <div style="font-size:0.88rem"><p>„A communicator with a passion for storytelling and content creation. When she is not looking for the right words, she is probably taking pictures, picking up new sewing crafts, or watching the latest true crime documentary release.”</p></div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row ms-3 me-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/maria.jpg" class="rounded-circle " height="110px"/>
+                <div class="mt-2 pt-4 ps-4"
+                data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <b style="font-size:0.9rem">Maria Grifoll Nogues</b>
+                    <p style="font-size:0.9rem">Learning Specialist</p>
+                </div>
+                </div>
+            <div style="font-size:0.88rem"><p>„Curious at heart, Maria's mission is to help the brain process, understand, and retain information. In her free time, she enjoys Aperol Spritzes in the sun, compelling novels, and the company of friends that will join in her hiking and winter bathing adventures.”</p></div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/sarah.jpg" class="rounded-circle " height="110px"/>
+                    <div class="mt-2 pt-4 ps-4"
+                    data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                        <b style="font-size:0.9rem">Sarah Jane Brandt</b>
+                        <p style="font-size:0.9rem">Junior Creative</p>
+                    </div>
+                    </div>
+                <div style="font-size:0.88rem"><p>„She is a creative mastermind in observing her surroundings and implementing them into illustrations. Sarah always tries to push her limits. She also likes to watch good movies and discover new books to expand her horizons.”</p></div>
+           
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row ms-3 me-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/aleks.jpg" class="rounded-circle " height="110px"/>
+                <div class="mt-2 pt-4 ps-4"
+                data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                    <b style="font-size:0.9rem">Aleksandr Beliun</b>
+                    <p style="font-size:0.9rem">Full-Stack Developer</p>
+                    
+                </div>
+                </div>
+            <div style="font-size:0.88rem"><p>„A tech enthusiast and seeker of knowledge and occasional adventures. He codes for fun and likes to explore what the internet has to offer. When he is not busy, he pretends to be a deceptive old orc.”</p></div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2 mb-2 d-flex pt-2 ps-3 pb-2"><img src="images/owly-nv.png" class="rounded-circle " height="110px"/>
+                    <div class="mt-2 pt-4 ps-4"
+                    data-aos="fade-left" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+                        <b style="font-size:0.9rem">Owly</b>
+                        <p style="font-size:0.9rem">Team Advisor</p>
+                    </div>
+                    </div>
+                <div style="font-size:0.88rem"><p>„A standup owl who loves to chat with anyone everywhere. Despite his serious appearance, he is a prankster at heart who is always cracking jokes at the office and then laughing at himself. He sure is hilarious...”</p></div>   
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid mt-4">
+        <div class="row ms-3 me-3">
+          <div class="col-md-2"></div>
+          <div class="col-md">
+            <b style="font-size: 2rem">See what our customers have to say</b>
+          </div>
+        </div>
+        <div class="row ms-3 me-3">
+          <div class="col-md-2"></div>
+          <div class="col-md-3">
+            <div class="">
+              <p class="text-center mt-2" style="font-size: 1.6rem">Excellent
+                <img src="images/s1.png" class="d-block mx-auto img-fluid mt-1" style="height: 35px !important;">
+                <a style="font-size: 0.85rem">Based on </a><a href="#" class="text-dark" style="font-size: 0.85rem">930 review</a>
+                <img src="images/s2.png" class="d-block mx-auto img-fluid" style="height: 30px !important;">
+              </p>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div id="carouselExampleControls" class="carousel slide mt-2 mb-2" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <!-- Carousel items -->
+                <div class="carousel-item active">
+                    <div class="container">
+                      <div class="row">
+                        <div class="cards-wrapper">
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" style="height:21px" alt="...">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Good to make resume</b></p>
+                              <p class="card-text" style="font-size:0.75rem">Good to make resume</p>
+                              <p style="font-size:0.75rem">Rajesh goud, <a>9 hours ago</a></p>
+                            </div>
+                          </div>
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>very nice experience</b></p>
+                              <p class="card-text" style="font-size:0.75rem">very nice experience</p>
+                              <p style="font-size:0.75rem">Rana M. Waqar, <a>March 9</a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="row">
+                        <div class="cards-wrapper">
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Good looking layouts</b></p>
+                              <p class="card-text" style="font-size:0.75rem">Good looking layouts</p>
+                              <p style="font-size:0.75rem">Tomas, <a>March 1</a></p>
+                            </div>
+                          </div>
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Very Good</b> </p>
+                              <p class="card-text" style="font-size:0.75rem">The resume and cover letter templates are good</p>
+                              <p style="font-size:0.75rem">Kunaal Shivakumar C, <a>February 23</a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="row">
+                        <div class="cards-wrapper">
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Perfect site</b></p>
+                              <p class="card-text" style="font-size:0.75rem">Perfect site</p>
+                              <p style="font-size:0.75rem">jan melad, <a>February 13</a></p>
+                            </div>
+                          </div>
+                          <div class="card" style="width:25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Easy and Simple</b> </p>
+                              <p class="card-text" style="font-size:0.75rem">I am using this tool for serveral years and i got many result</p>
+                              <p style="font-size:0.75rem">mary er, <a>February 6</a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="row">
+                        <div class="cards-wrapper">
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Really useful and easy to use</b></p>
+                              <p class="card-text" style="font-size:0.75rem">Really useful and easy to use</p>
+                              <p style="font-size:0.75rem">Bea, <a>February 2</a></p>
+                            </div>
+                          </div>
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>That's great ecperience</b></p>
+                              <p class="card-text" style="font-size:0.75rem">That's great experience </p>
+                              <p style="font-size:0.75rem">Hashir Aslam, <a>January 24</a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="row">
+                        <div class="cards-wrapper">
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Good to use resume</b></p>
+                              <p class="card-text" style="font-size:0.75rem">Good to use resume</p>
+                              <p style="font-size:0.75rem">Meethan Janjaem, <a>January 15</a></p>
+                            </div>
+                          </div>
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s4.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>Great serives</b> </p>
+                              <p class="card-text" style="font-size:0.75rem">Great serives to build your CV with great tips.</p>
+                              <p style="font-size:0.75rem">Nhu Phung, <a>January 2</a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="row">
+                        <div class="cards-wrapper">
+                          <div class="card" style="width: 25rem!important;">
+                            <div class="card-body">
+                            <img src="images/s3.png" class="" alt="..." style="height:21px">
+                              <p class="card-title mt-2" style="font-size :0.85rem !important;"><b>it is very good application</b></p>
+                              <p class="card-text" style="font-size:0.75rem">it is very good application</p>
+                              <p style="font-size:0.75rem">Meethan Janjaem, <a>December 29</a></p>
+                            </div>
+                          </div>
+                          <div class="card" style="width: 18rem;">
+                            <div class="card-body"> 
+            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                
+                </div>
+               <!-- Carousel control buttons -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="position: absolute; top: 50%; transform: translateY(-50%); left: 0; color:black; margin-left:-50px;margin-top:-25px">
+        <span class="fas fa-chevron-left fa-lg" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="position: absolute; top: 50%; transform: translateY(-50%); right: 0;  color:black; margin-right:-40px;margin-top:-25px">
+        <span class="fas fa-chevron-right fa-lg" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button> 
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="footer fixed-buttom mt-4">
+            <div class="container text-center">
+                  <!-- <p>&copy; 2024 Resume Builder. All rights reserved.</p>  -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="text-center"><div class="p3">Resources</div>
+                        <p class="p2">Pricing</p>
+                        <p class="p2">Resume Builder</p>
+                        <p class="p2">Resume Formatting</p>
+                        <p class="p2">Resume Writing</p>
+                        <p class="p2">Resume Writing Guide</p>
+                        <p class="p2">Professional Resume</p>
+                        <p class="p2">Entry-level Resume</p>
+                        <p class="p2">Student Resume</p>
+                        <p class="p2">Career Blog</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3" style="">
+                        <div class="text-center"><div class="p3">Support</div>
+                        <p class="p2">Privacy Policy</p>
+                        <p class="p2">Cookie Policy</p>
+                        <p class="p2">Terms and conditions</p>
+                        <p class="p2">Refund/Cancellations</p>
+                        <p class="p2">Contact us</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="">
+                        <div class="d-flex justify-content-center">
+                          <div><i class="fa-solid fa-globe fa-lg" style="color: #fcfcfc;"></i></div>
+                        <div style="font-weight:bold;font-size:18px;margin:0 6px">Languages</div>
+                        </div>
+                        <div class="text-center">
+                    <p class="p1">English</p>
+                    <p class="p1">Italiano</p>
+                    <p class="p1">Francais</p>
+                    <p class="p1">Espanol</p>
+                  </div>
+                    </div>
+                    <div class="col-md-3 text-center" style="">
+                        <div style="font-size:14px">WorkSimpli Software, LLC <br>1225 Ave Ponce de Leon, Suite 1001 <br>San Juan, PR, USA 00907 <br>Email: support@resumebuild.com</div>
+                        <div class="mt-2"> 
+                            <img src="images/icon.png" height="50px">
+                        </div>
+                        <div style="margin-top:2px">
+                            <img src="images/master.png" height="23px" width="200px" class="mt-3">
+                        </div>
+                        <div class="mt-2" style="font-size:14px">&copy; 2024 WorkSimpli Software, LLC.<br>
+                             a subsidiary of LifeMD Inc.<br>
+                              All rights reserved.
+                         </div>
+                    </div>  
+                </div>
+             <hr>
+             <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="div1 mx-auto d-block">
+                  <img src="images/image-1.svg"/>
+                </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="div1 mx-auto d-block">
+                  <img src="images/image-2.svg"/>
+                 </div>
+                 </div>
+                <div class="col-md-2">
+                  <div class="div1 mx-auto d-block"><img src="images/image-3.svg"/></div>
+                </div>
+                <div class="col-md-2">
+                  <div class="div1 mx-auto d-block"><img src="images/ResumeBuilt.svg"/></div>
+                </div>
+                <div class="col-md-2">
+                 <div class="div1 mx-auto d-block"> <img src="images/image-4.svg"/></div>
+                </div>
+                <div class="col-md-2">
+                  <div class="div1 mx-auto d-block"><img src="images/image-5.svg"/></div>
+                </div>
+              </div>
+             </div>
+            </div>
+        </footer>
+
+    
+
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      const signUpButton = document.getElementById('signUp');
+  const signInButton = document.getElementById('signIn');
+  const container = document.getElementById('container');
+  
+  signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+  });
+  
+  signInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+  });
+    </script>
+</body>
+</html>

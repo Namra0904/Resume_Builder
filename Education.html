@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Builder</title>
+    
+<link rel="icon" href="images/op-removebg-preview.png" type="images/x-icon">
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<style>
+    /* Custom CSS to style the input fields */
+    .form-control {
+      border-color: #939292; /* Black border color */
+  }
+  .form-select{
+    border-color: #939292; /* Black border color */
+
+  }
+</style>
+
+</head>
+<body>
+    
+  <nav class="navbar navbar-expand-lg fixed-top bg-white">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <div> <a href="#" class="navbar-brand fs-2 ms-3 me-1">
+                <i class="fa-regular fa-file-lines fa-xl" style="color:#0d6efd;"></i>       
+            </a>
+        </div>
+            <div class="text-black fs-2">
+                <b style="font-weight:bold" class="">Resume<b style="color:#0d6efd">Build</b></b></div>
+            </div>
+    <div class="navbar-toggler me-0">
+    <img src="images/l1.png" height="23px"><b class="ms-1 text-black" style="font-size:0.85rem"><b>EDUCATION</b></b>
+  </div>
+    
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+       <div class="offcanvas-body">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item me-2" >  
+                <img src="images/l3.png" height="25px"><b class="ms-1" style="font-size:0.75rem">CHOOSE TEMPLATE</b>
+            </li>
+            <li class="nav-item me-1">
+                <img src="images/l3.png" height="21px"><b class="ms-1" style="font-size:0.75rem">PERSONAL INFO</b>
+            </li>
+            <li class="nav-item me-2">
+                <img src="images/l3.png" height="21px"><b class="ms-1" style="font-size:0.75rem">EXPERIENCE</b>
+            </li>
+            <li class="nav-item me-2">
+              <img src="images/l1.png" height="21px"><b class="ms-1" style="font-size:0.75rem">EDUCATION</b>
+            </li>
+            <li class="nav-item me-2">
+              <img src="images/l2.png" height="21px"><b class="ms-1" style="font-size:0.75rem">SKILLS</b>
+            </li>
+            
+        </ul>
+    </div>
+    </div>
+ </nav>
+
+<div class="container-fluid"  style="margin-top:90px">
+    <div class="row ms-4 me-4">
+      <div class="col-md-9">
+        <h3><b>EDUACTION</b></h3>
+        <p style="font-size:1.2rem" class="mt-2">Add information about your educational background.</p>
+        
+  <form>
+    <div class="row mt-4">
+      <div class="col-md-6 mb-3">
+        <label for="schoolName" class="form-label">School Name</label>
+        <input type="text" class="form-control" id="schoolName" placeholder="Enter school name" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" placeholder="Enter city" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="state" class="form-label">State</label>
+        <input type="text" class="form-control" id="state" placeholder="Enter state" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="degree" class="form-label">Select a Degree</label>
+        <select class="form-select" id="degree" required>
+          <option value="">Select a degree</option>
+          <option value="bachelors">Bachelor's</option>
+          <option value="masters">Master's</option>
+          <option value="phd">PhD</option>
+        </select>
+      </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="fieldOfStudy" class="form-label">Field of Study</label>
+            <input type="text" class="form-control" id="fieldOfStudy" placeholder="Enter field of study" required>
+          </div>
+      <div class="col-md-6 mb-3">
+        <label for="graduationDate" class="form-label">Graduation Date</label>
+        <input type="date" class="form-control" id="graduationDate" required>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-md-3 d-none d-md-block">
+  <div class="ms-1 text-center" style="margin-top:115px">
+    <img src="images/p3.png" height="250px" class=""/>
+  </div>
+</div>
+</div>
+</div>
+<a class="btn btn-outline-primary btn-lg mt-3 ms-5" href="Experience.html" role="button" style="width:100px!important;border-radius: 4px !important;"><b>Back</b></a>
+<a class="btn btn-danger btn-lg mt-3 me-5"  type="submit" style="width: 170px; border-radius: 4px; float: right;" onclick="validateAndRedirect();">
+  <b>Save & Next</b>
+</a>
+
+<footer class="footer fixed-buttom mt-5">
+    <div class="container text-center">
+     
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center"><div class="p3">Resources</div>
+                <p class="p2">Pricing</p>
+                <p class="p2">Resume Builder</p>
+                <p class="p2">Resume Formatting</p>
+                <p class="p2">Resume Writing</p>
+                <p class="p2">Resume Writing Guide</p>
+                <p class="p2">Professional Resume</p>
+                <p class="p2">Entry-level Resume</p>
+                <p class="p2">Student Resume</p>
+                <p class="p2">Career Blog</p>
+              </div>
+            </div>
+            <div class="col-md-3" style="">
+                <div class="text-center"><div class="p3">Support</div>
+                <p class="p2">Privacy Policy</p>
+                <p class="p2">Cookie Policy</p>
+                <p class="p2">Terms and conditions</p>
+                <p class="p2">Refund/Cancellations</p>
+                <p class="p2">Contact us</p>
+                </div>
+            </div>
+            <div class="col-md-3" style="">
+                <div class="d-flex justify-content-center">
+                <div><i class="fa-solid fa-globe fa-lg" style="color: #fcfcfc;"></i></div>
+                <div style="font-weight:bold;font-size:18px;margin:0 6px">Languages</div>
+                </div>
+                <div class="text-center">
+            <p class="p1">English</p>
+            <p class="p1">Italiano</p>
+            <p class="p1">Francais</p>
+            <p class="p1">Espanol</p>
+          </div>
+            </div>
+            <div class="col-md-3 text-center" style="">
+                <div style="font-size:14px">WorkSimpli Software, LLC <br>1225 Ave Ponce de Leon, Suite 1001 <br>San Juan, PR, USA 00907 <br>Email: support@resumebuild.com</div>
+                <div class="mt-2"> 
+                    <img src="images/icon.png" height="50px">
+                </div>
+                <div style="margin-top:2px">
+                    <img src="images/master.png" height="23px" width="200px" class="mt-3">
+                </div>
+                <div class="mt-2" style="font-size:14px">&copy; 2024 WorkSimpli Software, LLC.<br>
+                     a subsidiary of LifeMD Inc.<br>
+                      All rights reserved.
+                 </div>
+            </div>  
+        </div>
+     <hr>
+     <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block">
+          <img src="images/image-1.svg"/>
+        </div>
+        </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block">
+          <img src="images/image-2.svg"/>
+         </div>
+         </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block"><img src="images/image-3.svg"/></div>
+        </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block"><img src="images/ResumeBuilt.svg"/></div>
+        </div>
+        <div class="col-md-2">
+         <div class="div1 mx-auto d-block"> <img src="images/image-4.svg"/></div>
+        </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block"><img src="images/image-5.svg"/></div>
+        </div>
+      </div>
+     </div>
+    </div>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function validateAndRedirect() {
+    var form = document.querySelector('form');
+    if (form.checkValidity()) {
+      window.location.href = 'skill.html';
+    } else {
+      form.reportValidity();
+    }
+  }
+</script>
+</body>
+</html>

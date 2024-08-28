@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Builder</title>
+    
+<link rel="icon" href="images/op-removebg-preview.png" type="images/x-icon">
+<link href="style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+<style>
+    /* Custom CSS for styling the form */
+    .skill-level {
+        margin-bottom: 10px;
+    }
+    .form-control {
+        border-color: #939292; /* Black border color */
+    }
+    .form-select{
+        border-color: #939292; /* Black border color */
+    
+      }
+   
+</style>
+</head>
+<body>
+     
+    <nav class="navbar navbar-expand-lg fixed-top bg-white">
+        <div class="container-fluid">
+            <div class="d-flex">
+                <div> <a href="#" class="navbar-brand fs-2 ms-3 me-1">
+                    <i class="fa-regular fa-file-lines fa-xl" style="color:#0d6efd;"></i>       
+                </a>
+            </div>
+                <div class="text-black fs-2">
+                    <b style="font-weight:bold" class="">Resume<b style="color:#0d6efd">Build</b></b></div>
+                </div>
+            <!-- <Button type="button" class="navbar-toggler fs-2 me-3" data-bs-toggle="offcanvas"
+            data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
+           <span> <i class="fa fa-bars" style="color:black"></i> </span>
+        </Button> -->
+        <div class="navbar-toggler me-0" >
+        <img src="images/l1.png" height="23px"><b class="ms-1 text-black" style="font-size:0.85rem"><b>SKILLS</b></b>
+      </div>
+        
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+            <div class="offcanvas-header">
+              <!-- <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5> -->
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+           <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item me-2" >
+                    <!-- <a href="index.html" class="nav-link"> <b>Home</b> </a> -->
+                    <img src="images/l3.png" height="25px"><b class="ms-1" style="font-size:0.75rem">CHOOSE TEMPLATE</b>
+
+                </li>
+                <li class="nav-item me-1">
+                    <!-- <a href="Resume_Templates.html" class="nav-link"><b> Resume Templates</b></a> -->
+                    <img src="images/l3.png" height="21px"><b class="ms-1" style="font-size:0.75rem">PERSONAL INFO</b>
+
+                </li>
+                <li class="nav-item me-2">
+                    <!-- <a href="#" class="nav-link"><b>Career Blog</b></a> -->
+                    <img src="images/l3.png" height="21px"><b class="ms-1" style="font-size:0.75rem">EXPERIENCE</b>
+
+                </li>
+                <li class="nav-item me-2">
+                  <img src="images/l3.png" height="21px"><b class="ms-1" style="font-size:0.75rem">EDUCATION</b>
+
+                    <!-- <a href="About.html" class="nav-link"><b>About us</b></a> -->
+                </li>
+                <li class="nav-item me-2">
+                  <img src="images/l1.png" height="21px"><b class="ms-1" style="font-size:0.75rem">SKILLS</b>
+
+                    <!-- <a href="#" class="nav-link"><b>EN US</b></a> -->
+                </li>
+               
+                <!-- <li class="nav-item me-2">
+                     <a href="#" class="nav-link"> -->
+                    <!-- <img src="images/l2.png" height="21px"><b class="ms-1" style="font-size:0.75rem">REVIEW & DOWNLOAD</b> -->
+
+                        <!-- <button class="btn btn-outline-danger btn-sm"><b>Login</b></button> -->
+                    <!-- </a> 
+                </li> -->
+            </ul>
+        </div>
+        </div>
+     </nav>
+     <form id="skillsForm">
+     <div class="container-fluid" style="margin-top:90px">
+        <div class="row ms-4 me-4">
+          <div class="col-md-9">
+            <h3><b>SKILLS</b></h3>
+            <p style="font-size:1.2rem" class="mt-2">Highlight 6-8 of your top skills. Writing tips Skill</p>
+      
+         
+              <div id="skillsContainer" class="mt-4">
+                <!-- Initial skill and level fields without delete button -->
+                <div class="row skill-level" data-index="0">
+                  <div class="col-md-5 mb-3">
+                    <label for="skill" class="form-label">Skill</label>
+                    <input type="text" id="skill" class="form-control" name="skill[]" placeholder="Eg. HTML" required>
+                  </div>
+                  <div class="col-md-5 mb-3">
+                    <label for="level" class="form-label">Level</label>
+                    <select class="form-select" id="level" required>
+                        <option value="">Select a level</option>
+                        <option value="bachelors">Begineer</option>
+                        <option value="masters">Skillful</option>
+                        <option value="phd">Experienced</option>
+                        <option value="phd">Expert</option>
+                        <option value="phd">Don't show level</option>
+
+                      </select>
+                  </div>
+
+                  <div class="col-md-2 mb-3">
+                    <!-- Empty div for spacing -->
+                  </div>
+                </div>
+                <div class="row skill-level" data-index="0">
+                    <div class="col-md-5 mb-3">
+                      <label for="skill" class="form-label">Skill</label>
+                      <input type="text" id="skill" class="form-control" name="skill[]" placeholder="Eg. Java" required>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                      <label for="level" class="form-label">Level</label>
+                      <select class="form-select" id="level" required>
+                        <option value="">Select a level</option>
+                        <option value="bachelors">Begineer</option>
+                        <option value="masters">Skillful</option>
+                        <option value="phd">Experienced</option>
+                        <option value="phd">Expert</option>
+                        <option value="phd">Don't show level</option>
+                        
+                      </select>
+                    </div>
+                    
+                    <div class="col-md-2 mb-3" >
+                
+
+                    </div>
+                  </div>
+                  <div class="row skill-level" data-index="0">
+                    <div class="col-md-5 mb-3">
+                      <label for="skill" class="form-label">Skill</label>
+                      <input type="text" id="skill" class="form-control" name="skill[]" placeholder="Eg. Project Management" required>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                      <label for="level" class="form-label">Level</label>
+                      <select class="form-select" id="level" required>
+                        <option value="">Select a level</option>
+                        <option value="bachelors">Begineer</option>
+                        <option value="masters">Skillful</option>
+                        <option value="phd">Experienced</option>
+                        <option value="phd">Expert</option>
+                        <option value="phd">Don't show level</option>
+
+                      </select>
+                    </div>
+                    <div class="col-md-2 mb-3" >
+                    </div>
+                  </div>
+              </div>
+           
+          </div>
+          <div class="col-md-3 d-none d-md-block ">
+            <div class="text-center " style="margin-top:115px;margin-left:-50px">
+              <img src="images/p4.png" height="280px" class=""/>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+<a class="btn btn-outline-primary btn-lg mt-3 ms-5" href="Education.html" role="button" style="width:100px!important;border-radius: 4px !important;"><b>Back</b></a>
+      
+<a class="btn btn-danger btn-lg mt-3 me-5" herf="Home.html" type="submit" style="width: 170px; border-radius: 4px; float: right;" onclick="validateAndRedirect();">
+  <b>Submit</b>
+</a>
+<!-- <button type="button" class="btn btn-outline-primary btn-lg mt-3 add" id="addSkill" style="width:170px!important;border-radius: 4px !important;">Add More Skill</button> -->
+<a class="btn btn-outline-primary btn-lg mt-3" href="#"  id="addSkill" role="button" style="width:200px!important;border-radius: 4px !important;"><b>Add More Skill</b></a>
+</form>
+
+
+      <footer class="footer fixed-buttom mt-5">
+        <div class="container text-center">
+              <!-- <p>&copy; 2024 Resume Builder. All rights reserved.</p>  -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="text-center"><div class="p3">Resources</div>
+                    <p class="p2">Pricing</p>
+                    <p class="p2">Resume Builder</p>
+                    <p class="p2">Resume Formatting</p>
+                    <p class="p2">Resume Writing</p>
+                    <p class="p2">Resume Writing Guide</p>
+                    <p class="p2">Professional Resume</p>
+                    <p class="p2">Entry-level Resume</p>
+                    <p class="p2">Student Resume</p>
+                    <p class="p2">Career Blog</p>
+                  </div>
+                </div>
+                <div class="col-md-3" style="">
+                    <div class="text-center"><div class="p3">Support</div>
+                    <p class="p2">Privacy Policy</p>
+                    <p class="p2">Cookie Policy</p>
+                    <p class="p2">Terms and conditions</p>
+                    <p class="p2">Refund/Cancellations</p>
+                    <p class="p2">Contact us</p>
+                    </div>
+                </div>
+                <div class="col-md-3" style="">
+                    <div class="d-flex justify-content-center">
+                    <div><i class="fa-solid fa-globe fa-lg" style="color: #fcfcfc;"></i></div>
+                    <div style="font-weight:bold;font-size:18px;margin:0 6px">Languages</div>
+                    </div>
+                    <div class="text-center">
+                <p class="p1">English</p>
+                <p class="p1">Italiano</p>
+                <p class="p1">Francais</p>
+                <p class="p1">Espanol</p>
+              </div>
+                </div>
+                <div class="col-md-3 text-center" style="">
+                    <div style="font-size:14px">WorkSimpli Software, LLC <br>1225 Ave Ponce de Leon, Suite 1001 <br>San Juan, PR, USA 00907 <br>Email: support@resumebuild.com</div>
+                    <div class="mt-2"> 
+                        <img src="images/icon.png" height="50px">
+                    </div>
+                    <div style="margin-top:2px">
+                        <img src="images/master.png" height="23px" width="200px" class="mt-3">
+                    </div>
+                    <div class="mt-2" style="font-size:14px">&copy; 2024 WorkSimpli Software, LLC.<br>
+                         a subsidiary of LifeMD Inc.<br>
+                          All rights reserved.
+                     </div>
+                </div>  
+            </div>
+         <hr>
+         <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="div1 mx-auto d-block">
+              <img src="images/image-1.svg"/>
+            </div>
+            </div>
+            <div class="col-md-2">
+              <div class="div1 mx-auto d-block">
+              <img src="images/image-2.svg"/>
+             </div>
+             </div>
+            <div class="col-md-2">
+              <div class="div1 mx-auto d-block"><img src="images/image-3.svg"/></div>
+            </div>
+            <div class="col-md-2">
+              <div class="div1 mx-auto d-block"><img src="images/ResumeBuilt.svg"/></div>
+            </div>
+            <div class="col-md-2">
+             <div class="div1 mx-auto d-block"> <img src="images/image-4.svg"/></div>
+            </div>
+            <div class="col-md-2">
+              <div class="div1 mx-auto d-block"><img src="images/image-5.svg"/></div>
+            </div>
+          </div>
+         </div>
+        </div>
+    </footer>
+
+    
+      <script>
+       
+          function validateAndRedirect() {
+            var form = document.querySelector('form');
+            if (form.checkValidity()) {
+              window.location.href = 'index.html';
+            } else {
+              form.reportValidity();
+            }
+          }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+          const skillsContainer = document.getElementById("skillsContainer");
+          const addSkillButton = document.getElementById("addSkill");
+      
+          const placeholders = [
+            "Eg. Framework/Library",
+            "Eg. Tool/Software",
+            "Eg. Language",
+            "Eg. Soft Skill",
+            "Eg. Technical Skill",
+            "Eg. Other Skill",
+            "Eg. Online Marketing"
+          ];
+      
+          let index = 1; // Index for new skill and level fields
+      
+          addSkillButton.addEventListener("click", function() {
+            if (skillsContainer.children.length < 10) {
+              const skillLevelRow = document.createElement("div");
+              skillLevelRow.classList.add("row", "skill-level");
+              skillLevelRow.dataset.index = index;
+              const placeholderIndex = index % placeholders.length;
+              skillLevelRow.innerHTML = `
+                <div class="col-md-5 mb-3">
+                  <label for="skill" class="form-label">Skill</label>
+                  <input type="text" class="form-control" name="skill[]" placeholder="${placeholders[placeholderIndex]}" required>
+                </div>
+                <div class="col-md-5 mb-3">
+                  <label for="level" class="form-label">Level</label>
+                  <select class="form-select" id="level" required>
+                    <option value="">Select a level</option>
+                    <option value="bachelors">Begineer</option>
+                    <option value="masters">Skillful</option>
+                    <option value="phd">Experienced</option>
+                    <option value="phd">Expert</option>
+                    <option value="phd">Don't show level</option>
+                  </select>
+                </div>
+                <div class="col-md mb-3" style="margin-top:30px">
+                  <button type="button" class="btn btn-danger delete-skill">Delete</button>
+                </div>
+              `;
+              skillsContainer.appendChild(skillLevelRow);
+              index++;
+            } else {
+              alert("Maximum limit reached (10 skills)");
+            }
+          });
+      
+           skillsContainer.addEventListener("click", function(event) {
+            if (event.target.classList.contains("delete-skill")) {
+              const skillLevelRow = event.target.closest(".skill-level");
+              if (skillLevelRow.dataset.index !== "0") {
+                skillLevelRow.remove();
+              }
+            }
+          });
+        }); 
+
+          
+      </script>
+      
+</body>
+</html>

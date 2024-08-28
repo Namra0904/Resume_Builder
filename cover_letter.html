@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    
+    <link rel="icon" href="images/op-removebg-preview.png" type="images/x-icon">
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <style>
+       
+        .offcanvas.show {
+            background-color: #f8f9fa; /* Background color for the offcanvas menu */
+            padding: 0px; /* Padding inside the offcanvas menu */
+            width: 300px !important; /* Adjust the width as needed */
+            
+        }
+        
+        .offcanvas-header {
+            background-color: #e9ecef; /* Background color for the offcanvas header */
+            border-bottom: 1px solid #ccc; /* Border at the bottom of the offcanvas header */
+            padding: 10px 20px; /* Padding inside the offcanvas header */
+        }
+        
+        .offcanvas-title {
+            color: #000; /* Text color for the offcanvas title */
+            font-size: 1.5rem; /* Font size for the offcanvas title */
+            font-weight: 600;
+            margin-bottom: 0; /* Remove default margin at the bottom */
+        }
+        
+        .offcanvas-body {
+            padding: 10px 15px; /* Padding inside the offcanvas body */
+        }
+        
+        .dropdown-menu {
+            background-color: #f8f9fa; /* Background color for dropdown menus */
+            border: 1px solid #ccc; /* Border for dropdown menus */
+            border-radius: 5px; /* Border radius for dropdown menus */
+        }
+        
+        .dropdown-item {
+            color: #000; /* Text color for dropdown items */
+        }
+        
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: #e9ecef; /* Background color for dropdown items on hover/focus */
+        }
+        
+        .template-img {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s;
+        }
+    
+        @media (min-width: 768px) {
+            .template-img:hover {
+                transform: scale(1.4);
+                z-index: 2;
+            }
+    
+            .template-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: opacity 0.5s;
+            }
+    
+            .template-img:hover .template-overlay {
+                opacity: 1;
+            }
+    
+            .template-btn {
+                font-size: 0.9rem;
+            }
+        }
+    
+        @media (max-width: 767px) {
+            .template-img:hover {
+                transform: none; /* Disabling the hovering effect on mobile */
+            }
+    
+            .template-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 1; /* Making the button always visible on mobile */
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        #h1 {
+            font-weight:700;
+            margin: 0;
+        }
+        
+        #h2 {
+            text-align: center;
+        }
+        
+        .p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+        }
+        
+        .span {
+            font-size: 12px;
+        }
+        
+        .a {
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+        
+        .button {
+            border-radius: 20px;
+            border: 1px solid #0d6efd;
+            background-color: #0d6efd;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+        
+        .button:active {
+            transform: scale(0.95);
+        }
+        
+        .button:focus {
+            outline: none;
+        }
+        
+        .button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+        
+        form {
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+        
+        input {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
+        
+        .container1 {
+            background-color: #fff;
+            border-radius: 10px;
+              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                    0 10px 10px rgba(0,0,0,0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;    
+            max-width: 100%;
+            min-height: 400px;
+        }
+        
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .container1.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+        }
+        
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .container1.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: show 0.6s;
+        }
+        
+        @keyframes show {
+            0%, 49.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+            
+            50%, 100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+        
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+        
+        .container1.right-panel-active .overlay-container{
+            transform: translateX(-100%);
+        }
+        
+        .overlay {
+            background: #0d6efd!important;
+            background: -webkit-linear-gradient(to right, #0d6efd, #0d6efd);
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #FFFFFF;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+              transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .container1.right-panel-active .overlay {
+              transform: translateX(50%);
+        }
+        
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+        
+        .container1.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+        
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+        
+        .container1.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+        
+        .social-container {
+            margin: 20px 0;
+        }
+        
+        .social-container a {
+            border: 1px solid #DDDDDD;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+        }
+        .modal-dialog {
+            max-width: 700px; /* Change this value to increase/decrease width */
+          
+        }
+        .modal-content {
+            background: none;
+            box-shadow: none;
+            border:none;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-white">
+        <div class="container-fluid">
+            <div class="d-flex">
+                <div> <a href="#" class="navbar-brand fs-2 ms-3 me-1">
+                    <i class="fa-regular fa-file-lines fa-xl" style="color:#0d6efd;"></i>       
+                </a>
+            </div>
+                <div class="text-black fs-2">
+                    <b style="font-weight:bold" class="">Resume<b style="color:#0d6efd">Build</b></b></div>
+                </div>
+            <Button type="button" class="navbar-toggler fs-2 me-3" data-bs-toggle="offcanvas"
+            data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
+           <span> <i class="fa fa-bars" style="color:black"></i> </span>
+        </Button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+           <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item me-2">
+                    <a href="index.html" class="nav-link"> <b>Home</b> </a>
+                </li>
+                <li class="nav-item me-2">
+                    <a href="Resume_Templates.html" class="nav-link"><b> Resume Templates</b></a>
+                </li>
+                <li class="nav-item me-2">
+                    <a href="cover_letter.html" class="nav-link active" data-bs-toggle="tooltip" 
+                    data-bs-custom-class="custom-tooltip" data-bs-placement="bottom" title="All Article+<br>Resume & CV Writing+<br> 
+                    "><b>Cover Letters</b></a>
+                     <!-- <ul class="dropdown-menu">
+                        <li><a class="dropdown-item">All Article</a></li>
+                        <li><a class="dropdown-item">Resume & CV Writing</a></li>
+                        <li><a class="dropdown-item">Cover Letter Writing</a></li>
+                        <li><a class="dropdown-item">Examples</a></li>
+                        <li><a class="dropdown-item">Personal Development</a></li>
+                        <li><a class="dropdown-item">Inspiring Stories</a></li>
+                        <li><a class="dropdown-item">Interviews & Find A Job</a></li>
+
+                    </ul>  -->
+                </li>
+                <li class="nav-item me-2 dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><b>Career Blog</b></a>
+                    <ul class="dropdown-menu" style="border: 1px solid #ccc; border-radius: 5px;">
+                          <!-- data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" 
+                                title="All Articles<br>Resume and CV Writing<br>Cover Letter Writing<br>Examples<br>Personal Development<br>Inspiring Stories<br>Interviews & Find a Job"
+                                data-bs-class="tooltip-custom" -->
+                        <li><a class="dropdown-item" href="#">All Articles</a></li>
+                        <li><a class="dropdown-item" href="#">Resume and CV Writing</a></li>
+                        <li><a class="dropdown-item" href="#">Cover Letter Writing</a></li>
+                        <li><a class="dropdown-item" href="#">Examples</a></li>
+                        <li><a class="dropdown-item" href="#">Personal Development</a></li>
+                        <li><a class="dropdown-item" href="#">Inspiring Stories</a></li>
+                        <li><a class="dropdown-item" href="#">Interviews & Find a Job</a></li>
+
+
+                    </ul>
+                </li>
+                <li class="nav-item me-2">
+                    <a href="About.html" class="nav-link"><b>About us</b></a>
+                </li>
+                <li class="nav-item me-2 dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><b>EN US</b></a>
+                    <ul class="dropdown-menu" style="border: 1px solid #ccc; border-radius: 5px;">
+                        <li><a class="dropdown-item" href="#">Dansk<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                        <li><a class="dropdown-item" href="#">Deutsch<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                        <li><a class="dropdown-item" href="#" style="color:#0d6efd">English US</a></li>
+                        <li><a class="dropdown-item" href="#">English UK<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                        <li><a class="dropdown-item" href="#">Espanol<small style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                        
+                    </ul>
+                </li>
+                <li class="nav-item me-2">
+                    <!-- <button Class="btn btn-outline-danger"data-bs-target="#namra" data-bs-toggle="modal" class="nav-link">Login
+                    </button> -->
+                    <button class="btn btn-outline-danger btn-sm" data-bs-target="#namra" data-bs-toggle="modal" class="nav-link"><b>Login</b></button>
+
+                    <div class="modal" id="namra"  style="z-index: 2000;">
+                        <div class="modal-dialog  modal-dialog-centered" >
+                          <div class="modal-content">
+
+                            
+                            <div class="modal-body">
+                                
+                                <div class="container1" id="container">
+                                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" ></button> -->
+                                    <div class="form-container sign-up-container">
+                                        <form action="#">
+                                            <h2 id="h1">Create Account</h2>
+                                            <div class="social-container">
+                                                <a href="#" class="social a"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-google-plus-g"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-linkedin-in"></i></a>
+                                            </div>
+                                            <span class="span">or use your email for registration</span>
+                                            <input type="text" placeholder="Name" />
+                                            <input type="email" placeholder="Email" />
+                                            <input type="password" placeholder="Password" />
+                                            <button class="button mt-1">Sign Up</button>
+                                        </form>
+                                    </div>
+                                    <div class="form-container sign-in-container">
+                                        <form action="#">
+                                            <h2 id="h1">Sign in</h2>
+                                            <div class="social-container">
+                                                <a href="#" class="social a"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-google-plus-g"></i></a>
+                                                <a href="#" class="social a"><i class="fab fa-linkedin-in"></i></a>
+                                            </div>
+                                            <span class="span">or use your account</span>
+                                            <input type="email" placeholder="Email" />
+                                            <input type="password" placeholder="Password" />
+                                            <a href="#">Forgot your password?</a>
+                                            <button class="button mt-2">Login</button>
+                                        </form>
+                                    </div>
+                                    <div class="overlay-container">
+                                        <div class="overlay">
+                                            <div class="overlay-panel overlay-left">
+                                                <h1 is="h1">Welcome Back!</h1>
+                                                <p class="p">To keep connected with us please login with your personal info</p>
+                                                <button class="ghost button" id="signIn">Login</button>
+                                            </div>
+                                            <div class="overlay-panel overlay-right">
+                                                <h1 id="h1">Hello, Friend!</h1>
+                                                <p class="p">Enter your personal details and start journey with us</p>
+                                                <button class="ghost button" id="signUp">Sign Up</button>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                </li>
+                
+            </ul>
+        </div>
+        </div>
+     </nav>
+
+
+
+    
+    
+    <div class="container-fluid" style="margin-top:5.5rem">
+        <div class="container">
+            <div class="text-center pt-4">
+                <p style="font-size:2.1rem"><b>PROFESSIONAL</b> COVER LETTER TEMPLATES</p>
+                <p style="font-size:1.2rem">CHOOSE FROM 8+ TAILORED COVER LETTER TEMPLATES THAT HAVE HELPED THOUSANDS OF JOB SEEKERS LIKE YOU LAND THE JOBS THEY WERE DREAMING OF.</p>
+            </div>
+            <div class="row text-center pt-4">
+                <div class="col-md-4 template-img">
+                    <img src="images/c1.png" height="400px" class="img-fluid border "/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn" ><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c5.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c9.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center" style="padding-top:40px">
+                <div class="col-md-4 template-img">
+                    <img src="images/c4.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn" ><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c2.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c6.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center" style="padding-top:40px">
+                <div class="col-md-4 template-img">
+                    <img src="images/c7.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn" ><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c8.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c3.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center " style="padding-top:40px" >
+                <div class="col-md-4 template-img">
+                    <img src="images/c10.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn" ><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c11.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+                <div class="col-md-4 template-img">
+                    <img src="images/c12.png" height="400px" class="img-fluid border"/>
+                    <div class="pt-2 template-overlay">
+                        <button type="button" class="btn btn-primary btn-lg template-btn"><b>Build My Cover Letter</b></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid mt-5">
+        <p class="text-center mb-5" style="font-size:2rem"><b>Why Resume Builder?</b></p>
+        <div class="row ms-4 me-4">
+            <div class="col-md-6 d-flex">
+                <div class="row ms-2 me-2">
+                    <div class="col-lg-4 mt-1 mb-1 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" 
+                    data-aos-once="true">
+                    <img src="images/ro_files/why-1@2x.png" class="ms-1" style="height:100px" />
+                    </div>
+                    <div class="col-lg mt-1 mb-1 ps-2">
+                        <b style="font-size:20px;">Matching Cover Letters</b>
+                        <p class="mt-1" style="text-align:justify;font-size:0.9rem">To keep your job application consistent and professional, our Cover Letter templates perfectly match the resume templates.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex">
+                <div class="row ms-2 me-2">
+                    <div class="col-lg-4  mt-1 mb-1  text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" 
+                    data-aos-once="true">
+                    <img src="images/ro_files/why-3@2x.png" class="ms-1" style="height:100px"/>
+
+                    </div>
+                    <div class="col-lg mt-1 mb-1 ps-2">
+                        <b style="font-size:20px;">Creative & Standard Templates</b>
+                        <p class="mt-1" style="text-align:justify;font-size:0.9rem">Whether you apply for a conservative industry like banking or a hype start-up, you can tailor our cover letter templates to fit your exact needs.</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </div>
+   
+<div class="container-fluid" style="margin-top:4rem">
+    <div class="container text-center">
+        <p style="font-size:2.2rem"><b>Cover Letters Resources</b></p>
+    </div>
+    <div class="row me-5 ms-5" style="padding-top:3rem">
+      <div class="col-md-3 ">
+        <div class="container mt-3 mb-3  text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+            <img src="images/no1.png" style="height:170px" class="img-fluid"/>
+        </div>
+      </div>
+      <div class="col-md-6 ">
+        <p style="font-size:1.8rem"><b>What is a Cover Letter?</b></p>
+        <p style="text-align:justify;font-size:1rem">A cover letter is a one-page document you submit alongside your resume or CV for your job application.</p>
+        <p style="text-align:justify;font-size:1rem">The main purpose of your cover letter is to:</p>
+        <!-- <p style="text-align:justify;font-size:1rem">With a resume builder, you don’t have to worry about the nitty gritty of resume creation, like font selection, layout, formatting, etc.</p>
+        <p style="text-align:justify;font-size:1rem">All you have to do is pick a resume template, fill it in, and then you’re ready to start applying for jobs!</p> -->
+        <ul>
+            <li style="font-size:1rem">Show your motivation for working at the company</li>
+            <li style="font-size:1rem">Bring special attention to the most important parts of your work history </li>
+            <li style="font-size:1rem">Explain how your work experience fits whatever the company is looking for</li>
+        </ul> 
+        <p style="text-align:justify;font-size:1rem">What your cover letter is NOT about, is rehashing whatever you already mentioned in your resume. Sure, you should <b>mention</b> the most important bits, but it should NOT be a literal copy-paste.</p>
+        <p style="text-align:justify;font-size:1rem">Keep in mind that the cover letter is usually read <b>after</b> the recruiter scans your resume and decides that you’re qualified for the position.</p>
+        
+
+     
+    </div>
+      <div class="col-md-3 "></div>
+    </div>
+    
+    <div class="row me-5 ms-5 mt-4">
+       <div class="col-md-3"></div>
+       <div class="col-md-6">
+        <p style="font-size:1.8rem"><b>Why Use a Cover Letter Template?</b></p>
+        <p style="text-align:justify;font-size:1rem">Your cover letter is just as (if not more) important as your resume.</p>
+        <p style="text-align:justify;font-size:1rem">After all, your resume is what gets your foot through the door, but a cover letter is what opens that door.</p>
+        <p style="text-align:justify;font-size:1rem">So, if you put so much effort into your resume, why not do the same for your cover letter?</p>
+        <p style="text-align:justify;font-size:1rem">A good cover letter template can show the recruiter that you’re serious about the job (especially if it matches your resume design).</p>
+        
+    </div>
+       <div class="col-md-3">
+        <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+            <img src="images/no2.png" style="height:170px" class="img-fluid"/>
+        </div>
+       </div>
+    </div>
+
+ <div class="row me-5 ms-5 mt-4">
+    <div class="col-md-3">
+        <div class="container mt-3 mb-3  text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+            <img src="images/no3.png" style="height:170px" class="img-fluid"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <p style="font-size:1.8rem"><b>What to Include in Your Cover Letter?</b></p>
+          <!-- <p style="text-align:justify">If you use any of our premium features, the software will let you know about it. It will then ask if you did it accidentally, or if you would like to upgrade to Novorésumé Premium. You're in control!</p> -->
+        <!-- <div class="row">
+            <div class="col-md-6">
+            <p style="text-align:justify;font-size:1rem">The most common sections on a resume are:</p>
+            <ul>
+                <li style="font-size:1rem">Contact information</li>
+                <li style="font-size:1rem">Resume summary or objective</li>
+                <li style="font-size:1rem">Work experience</li>
+                <li style="font-size:1rem">Education</li>
+            </ul> 
+            </div>
+            <div class="col-md-6">
+                <p style="text-align:justify;font-size:1rem">If you want to personalize your resume a bit more, you can also include the following sections:</p>
+            <ul>
+                <li style="font-size:1rem">Projects</li>
+                <li style="font-size:1rem">Volunteering experience</li>
+                <li style="font-size:1rem">Hobbies & interests</li>
+                <li style="font-size:1rem">Portfolio</li>
+            </ul>
+            </div> -->
+            <p style="text-align:justify;font-size:1rem">Every good cover letter has the following sections:</p>
+        <p style="text-align:justify;font-size:1rem"><b>Header</b> - On top of the cover letter, you write down your own contact information, as well as the recruiter’s (recruiter name, company name, company address, etc…).</p>
+        <p style="text-align:justify;font-size:1rem"><b>Greeting</b> - A formal greeting for the recruiter. E.g. “Dear Sir or Madam,” To learn how to <a href="#" id="a1">address your cover letter</a> better, check out our article.</p>
+        <p style="text-align:justify;font-size:1rem"><b>Opening paragraph</b> - The introduction of your resume. Here, you summarize your background info (“financial analyst with X+ years of experience”), state your intent (“looking for X position at Company Y”), and summarize your 1-2 achievements to get the recruiter hooked.</p>
+        <p style="text-align:justify;font-size:1rem"><b>Second paragraph</b> - In the second paragraph, you explain how you’re qualified for the position and why the recruiter should pick YOU.</p>
+        <p style="text-align:justify;font-size:1rem"><b>Third paragraph</b> - You talk about why you’re a good match for the company. Do you share common values? Is the company working on projects you’re interested in? Etc…</p>
+        <p style="text-align:justify;font-size:1rem"><b>Formal closing</b> - Finally, you <a href="#" id="a1">end the cover letter</a> with a quick summary and a call to action (“I’m super excited to work with Company X. Looking forward to hearing from you!”).</p>
+    
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+ 
+
+ <div class="row me-5 ms-5 mt-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <p style="font-size:1.8rem"><b>How to Write a Great Cover Letter?</b></p>
+        <p style="text-align:justify;font-size:1rem">There’s a lot that goes into writing a great cover letter. If you want to get the full picture, you can check out our guide on <a href="#" id="a1">how to write a cover letter</a>.</p>
+        <p style="text-align:justify;font-size:1rem">Here are, however, some of the key takeaways:</p>
+     <ul>
+                <li style="font-size:1rem"><b>Avoid Fluff</b> - You want to be as specific as possible with your cover letter. Avoid vague statements like “I’m a good fit for the company because I’m a good critical thinker!”</li>
+                <li style="font-size:1rem"><b>Do Your Research</b>- Most companies don’t like people who “spray and pray” - applying for dozens of jobs without giving any much thought. What they ARE looking for is someone that’s passionate about their company, and wants to contribute. So, do your research about the companies you apply for, and show off your knowledge and passion in your cover letter.</li>
+                <li style="font-size:1rem"><b>Back Up Your Achievements with Data</b>- When possible, back up your experience with data. Instead of saying, “I improved company revenue”, say “I managed to hit and exceed sales KPIs for 5+ months in a row.”</li>
+                 </ul>
+    </div>
+    <div class="col-md-3">
+        <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+            <img src="images/no4.png" style="height:170px" class="img-fluid"/>
+        </div>
+    </div>
+ </div>
+
+ <div class="row me-5 ms-5 mt-4">
+    <div class="col-md-3">
+        <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+            <img src="images/no5.png" style="height:160px" class="img-fluid"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <p style="font-size:1.8rem"><b>How Long Should a Cover Letter Be?</b></p>
+        <p style="text-align:justify;font-size:1rem">Most recruiters agree that a cover letter should be brief and concise. It should be around 1-page max, within a 250 to 400 word range.</p>
+        <p style="text-align:justify;font-size:1rem">Keep in mind that the cover letter is usually read after the recruiter scans your resume and decides that you’re qualified for the position.</p>
+    </div>
+    <div class="col-md-3"></div>
+ </div>
+ 
+ <div class="row ms-5 me-5 ">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <p style="font-size:1.8rem"><b>How Can I Write a Student Cover Letter?</b></p>
+        <p style="text-align:justify;font-size:1rem">Pretty much the same way you’d write a regular cover letter, with one difference.</p>
+        <p style="text-align:justify;font-size:1rem">Instead of focusing on your work experience, you should talk about:</p>
+        <ul>
+            <li style="font-size:1rem">Why you want to work for the company you’re applying for</li>
+            <li style="font-size:1rem">How your educational background prepared you for the job</li>
+            <li style="font-size:1rem">How your skill-set can help you stand out and excel at the job
+            </li>
+             </ul>
+    </div>
+    <div class="col-md-3">
+        <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="2000" data-aos-once="true">
+            <img src="images/no6.png" style="height:170px" class="img-fluid"/>
+        </div>
+    </div>
+ </div>
+ </div>
+
+
+<div class="container-fluid mt-5">
+    <div class="container">
+        <p class="text-center mb-5" style="font-size:2rem"><b>Cover Letter Templates FAQ?</b></p>
+        <div class="row mt-2">
+            <div class="col-md-6">
+            <p style="font-size:1.8rem" class=""><b>How to Make a Simple Cover Letter for Your Resume?</b></p>
+        <p style="text-align:justify;font-size:1rem">Simply pick one of our 12 cover letter templates above to get started.</p>
+        <p style="text-align:justify;font-size:1rem">We’d recommend matching your cover letter template to the <a href="#" id="a1">resume template</a> you picked.</p>
+
+            
+            </div>
+            <div class="col-md-6 ">
+            <p style="font-size:1.8rem" class=""><b>What is the Best Cover Letter Template?</b></p>
+        <p style="text-align:justify;font-size:1rem">There’s no such thing as the “best cover letter template.” After all, every single recruiter has their own personal taste. Some might like a shiny & flashy cover letter template, while others might think it’s tacky.</p>
+        <p style="text-align:justify;font-size:1rem">As a rule of thumb, though, we usually recommend customizing each cover letter for the company you’re sending it to.</p>
+                
+            
+            </div>
+
+    </div>
+</div>
+
+<footer class="footer fixed-buttom mt-5">
+    <div class="container text-center">
+          <!-- <p>&copy; 2024 Resume Builder. All rights reserved.</p>  -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center"><div class="p3">Resources</div>
+                <p class="p2">Pricing</p>
+                <p class="p2">Resume Builder</p>
+                <p class="p2">Resume Formatting</p>
+                <p class="p2">Resume Writing</p>
+                <p class="p2">Resume Writing Guide</p>
+                <p class="p2">Professional Resume</p>
+                <p class="p2">Entry-level Resume</p>
+                <p class="p2">Student Resume</p>
+                <p class="p2">Career Blog</p>
+              </div>
+            </div>
+            <div class="col-md-3" style="">
+                <div class="text-center"><div class="p3">Support</div>
+                <p class="p2">Privacy Policy</p>
+                <p class="p2">Cookie Policy</p>
+                <p class="p2">Terms and conditions</p>
+                <p class="p2">Refund/Cancellations</p>
+                <p class="p2">Contact us</p>
+                </div>
+            </div>
+            <div class="col-md-3" style="">
+                <div class="d-flex justify-content-center">
+                <div><i class="fa-solid fa-globe fa-lg" style="color: #fcfcfc;"></i></div>
+                <div style="font-weight:bold;font-size:18px;margin:0 6px">Languages</div>
+                </div>
+                <div class="text-center">
+            <p class="p1">English</p>
+            <p class="p1">Italiano</p>
+            <p class="p1">Francais</p>
+            <p class="p1">Espanol</p>
+          </div>
+            </div>
+            <div class="col-md-3 text-center" style="">
+                <div style="font-size:14px">WorkSimpli Software, LLC <br>1225 Ave Ponce de Leon, Suite 1001 <br>San Juan, PR, USA 00907 <br>Email: support@resumebuild.com</div>
+                <div class="mt-2"> 
+                    <img src="images/icon.png" height="50px">
+                </div>
+                <div style="margin-top:2px">
+                    <img src="images/master.png" height="23px" width="200px" class="mt-3">
+                </div>
+                <div class="mt-2" style="font-size:14px">&copy; 2024 WorkSimpli Software, LLC.<br>
+                     a subsidiary of LifeMD Inc.<br>
+                      All rights reserved.
+                 </div>
+            </div>  
+        </div>
+     <hr>
+     <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block">
+          <img src="images/image-1.svg"/>
+        </div>
+        </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block">
+          <img src="images/image-2.svg"/>
+         </div>
+         </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block"><img src="images/image-3.svg"/></div>
+        </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block"><img src="images/ResumeBuilt.svg"/></div>
+        </div>
+        <div class="col-md-2">
+         <div class="div1 mx-auto d-block"> <img src="images/image-4.svg"/></div>
+        </div>
+        <div class="col-md-2">
+          <div class="div1 mx-auto d-block"><img src="images/image-5.svg"/></div>
+        </div>
+      </div>
+     </div>
+    </div>
+</footer>
+
+
+ 
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+  const signUpButton = document.getElementById('signUp');
+  const signInButton = document.getElementById('signIn');
+  const container = document.getElementById('container');
+  
+  signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+  });
+  
+  signInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+  });
+</script>
+</body>
+</html>

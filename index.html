@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    
+    <link rel="icon" href="images/op-removebg-preview.png" type="images/x-icon">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous"> -->
+
+    <style>
+        .offcanvas.show {
+            background-color: #f8f9fa;
+            /* Background color for the offcanvas menu */
+            padding: 0px;
+            /* Padding inside the offcanvas menu */
+            width: 300px !important;
+            /* Adjust the width as needed */
+
+        }
+
+        .offcanvas-header {
+            background-color: #e9ecef;
+            /* Background color for the offcanvas header */
+            border-bottom: 1px solid #ccc;
+            /* Border at the bottom of the offcanvas header */
+            padding: 10px 20px;
+            /* Padding inside the offcanvas header */
+        }
+
+        .offcanvas-title {
+            color: #000;
+            /* Text color for the offcanvas title */
+            font-size: 1.5rem;
+            /* Font size for the offcanvas title */
+            font-weight: 600;
+            margin-bottom: 0;
+            /* Remove default margin at the bottom */
+        }
+
+        .offcanvas-body {
+            padding: 10px 15px;
+            /* Padding inside the offcanvas body */
+        }
+
+        .dropdown-menu {
+            background-color: #f8f9fa;
+            /* Background color for dropdown menus */
+            border: 1px solid #ccc;
+            /* Border for dropdown menus */
+            border-radius: 5px;
+            /* Border radius for dropdown menus */
+        }
+
+        .dropdown-item {
+            color: #000;
+            /* Text color for dropdown items */
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: #e9ecef;
+            /* Background color for dropdown items on hover/focus */
+        }
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        #h1 {
+            font-weight:700;
+            margin: 0;
+        }
+        
+        #h2 {
+            text-align: center;
+        }
+        
+        .p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+        }
+        
+        .span {
+            font-size: 12px;
+        }
+        
+        .a {
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+        
+        .button {
+            border-radius: 20px;
+            border: 1px solid #0d6efd;
+            background-color: #0d6efd;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+        
+        .button:active {
+            transform: scale(0.95);
+        }
+        
+        .button:focus {
+            outline: none;
+        }
+        
+        .button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+        
+        form {
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+        
+        input {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
+        
+        .container1 {
+            background-color: #fff;
+            border-radius: 10px;
+              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                    0 10px 10px rgba(0,0,0,0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;    
+            max-width: 100%;
+            min-height: 400px;
+        }
+        
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .container1.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+        }
+        
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .container1.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: show 0.6s;
+        }
+        
+        @keyframes show {
+            0%, 49.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+            
+            50%, 100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+        
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+        
+        .container1.right-panel-active .overlay-container{
+            transform: translateX(-100%);
+        }
+        
+        .overlay {
+            background: #0d6efd!important;
+            background: -webkit-linear-gradient(to right, #0d6efd, #0d6efd);
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #FFFFFF;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+              transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .container1.right-panel-active .overlay {
+              transform: translateX(50%);
+        }
+        
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+        
+        .container1.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+        
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+        
+        .container1.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+        
+        .social-container {
+            margin: 20px 0;
+        }
+        
+        .social-container a {
+            border: 1px solid #DDDDDD;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+        }
+        .modal-dialog {
+            max-width: 700px; /* Change this value to increase/decrease width */
+          
+        }
+        .modal-content {
+            background: none;
+            box-shadow: none;
+            border:none;
+        }
+            </style>
+       
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-white">
+        <div class="container-fluid">
+            <div class="d-flex">
+                <div>
+                    <a href="#" class="navbar-brand fs-3 ms-2 me-1">
+                        <i class="fa-regular fa-file-lines fa-xl" style="color:#0d6efd;"></i>
+                        <!-- <img src="images/logo1.png" class="border"height="50px"/> -->
+                    </a>
+                </div>
+                <div class="text-black fs-2">
+                    <b style="font-weight:bold" class="">Resume<b style="color:#0d6efd">Build</b></b>
+                </div>
+            </div>
+            <Button type="button" class="navbar-toggler fs-2 me-3" data-bs-toggle="offcanvas"
+                data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
+                <span> <i class="fa fa-bars" style="color:black"></i> </span>
+            </Button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas"
+                aria-labelledby="navbarOffcanvasLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav  ms-auto ">
+                        <li class="nav-item me-2 ">
+                            <a href="index.html" class="nav-link active"> <b>Home</b> </a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a href="Resume_Templates.html" class="nav-link"><b> Resume Templates</b></a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a href="cover_letter.html" class="nav-link"><b>Cover Letters</b></a>
+                        </li>
+                        <li class="nav-item me-2 dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><b>Career Blog</b></a>
+                            <ul class="dropdown-menu" style="border: 1px solid #ccc; border-radius: 5px;">
+                                <li><a class="dropdown-item" href="#">All Articles</a></li>
+                                <li><a class="dropdown-item" href="#">Resume and CV Writing</a></li>
+                                <li><a class="dropdown-item" href="#">Cover Letter Writing</a></li>
+                                <li><a class="dropdown-item" href="#">Examples</a></li>
+                                <li><a class="dropdown-item" href="#">Personal Development</a></li>
+                                <li><a class="dropdown-item" href="#">Inspiring Stories</a></li>
+                                <li><a class="dropdown-item" href="#">Interviews & Find a Job</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a href="About.html" class="nav-link"><b>About us</b></a>
+                        </li>
+                        <li class="nav-item me-2 dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><b>EN US</b></a>
+                            <ul class="dropdown-menu" style="border: 1px solid #ccc; border-radius: 5px;">
+                                <li><a class="dropdown-item" href="#">Dansk<small
+                                            style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                                <li><a class="dropdown-item" href="#">Deutsch<small
+                                            style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                                <li><a class="dropdown-item" href="#" style="color:#0d6efd">English US</a></li>
+                                <li><a class="dropdown-item" href="#">English UK<small
+                                            style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                                <li><a class="dropdown-item" href="#">Espanol<small
+                                            style="font-size:0.8rem!important;color:darkgray"> BETA</small></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item me-2">
+                            <!-- <button Class="btn btn-outline-danger"data-bs-target="#namra" data-bs-toggle="modal" class="nav-link">Login
+                            </button> -->
+                            <button class="btn btn-outline-danger btn-sm" data-bs-target="#namra" data-bs-toggle="modal" class="nav-link"><b>Login</b></button>
+
+                            <div class="modal" id="namra"  style="z-index: 2000;">
+                                <div class="modal-dialog  modal-dialog-centered" >
+                                  <div class="modal-content">
+    
+                                    
+                                    <div class="modal-body">
+                                        
+                                        <div class="container1" id="container">
+                                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" ></button> -->
+                                            <div class="form-container sign-up-container">
+                                                <form action="#">
+                                                    <h2 id="h1">Create Account</h2>
+                                                    <div class="social-container">
+                                                        <a href="#" class="social a"><i class="fab fa-facebook-f"></i></a>
+                                                        <a href="#" class="social a"><i class="fab fa-google-plus-g"></i></a>
+                                                        <a href="#" class="social a"><i class="fab fa-linkedin-in"></i></a>
+                                                    </div>
+                                                    <span class="span">or use your email for registration</span>
+                                                    <input type="text" placeholder="Name" />
+                                                    <input type="email" placeholder="Email" />
+                                                    <input type="password" placeholder="Password" />
+                                                    <button class="button mt-1">Sign Up</button>
+                                                </form>
+                                            </div>
+                                            <div class="form-container sign-in-container">
+                                                <form action="#">
+                                                    <h2 id="h1">Sign in</h2>
+                                                    <div class="social-container">
+                                                        <a href="#" class="social a"><i class="fab fa-facebook-f"></i></a>
+                                                        <a href="#" class="social a"><i class="fab fa-google-plus-g"></i></a>
+                                                        <a href="#" class="social a"><i class="fab fa-linkedin-in"></i></a>
+                                                    </div>
+                                                    <span class="span">or use your account</span>
+                                                    <input type="email" placeholder="Email" />
+                                                    <input type="password" placeholder="Password" />
+                                                    <a href="#">Forgot your password?</a>
+                                                    <button class="button mt-2">Login</button>
+                                                </form>
+                                            </div>
+                                            <div class="overlay-container">
+                                                <div class="overlay">
+                                                    <div class="overlay-panel overlay-left">
+                                                        <h1 is="h1">Welcome Back!</h1>
+                                                        <p class="p">To keep connected with us please login with your personal info</p>
+                                                        <button class="ghost button" id="signIn">Login</button>
+                                                    </div>
+                                                    <div class="overlay-panel overlay-right">
+                                                        <h1 id="h1">Hello, Friend!</h1>
+                                                        <p class="p">Enter your personal details and start journey with us</p>
+                                                        <button class="ghost button" id="signUp">Sign Up</button>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="jumbotron text-center">
+        <h1 class="display-4"><b>Create Your Professional Resume</b></h1>
+        <p class="lead">Build a standout resume with our easy-to-use online resume builder.</p>
+        <a class="btn btn-primary btn-lg" href="choose.html" role="button"><b>START MY RESUME</b></a>
+    </div>
+
+    <div class="container-fluid">
+        <img src="images/wave-with-people.webp" width="100%" class="img-fluid">
+    </div>
+
+
+    <div class="container-fluid" style="margin-top:5.5rem">
+        <div class="container" style="background-color:#eeeeee;border-radius:1rem">
+            <div class="text-center pt-4">
+                <p style="font-size:1.9rem"><b><b>Resume Templates for Every Career Path.</b></p>
+            </div>
+            <div class="text-center  pt-4 ps-3 pe-3">
+                <p style="font-size:1.1rem;">You can pick one of our handcrafted resume templates above. You can start
+                    building your resume in less than 5 seconds, using predefined sections approved by recruiters
+                    worldwide. You can also customize it to your own needs and personality and hit 'Download'. It's THAT
+                    easy to use, even if you've never made a resume in your life before!</p>
+            </div>
+            <div class="row  text-center pt-4 ">
+                <div class="col-md-4">
+                    <img src="images/ro_files/template0.png" height="400px" class="img-fluid" />
+                    <div class="pt-2">
+                        <p style="font-size:1.3rem;"><b>Creative Resume Template</b></p>
+                        <p style="font-size:0.95rem">A resume template as creative as your imagination</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/ro_files/template1.png" height="400px" class="img-fluid" />
+                    <div class="pt-2">
+                        <p style="font-size:1.3rem;"><b>Professional Resume template</b></p>
+                        <p style="font-size:0.95rem">Put your best foot forward with a professional resume template</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/ro_files/template2.png" height="400px" class="img-fluid" />
+                    <div class="pt-2">
+                        <p style="font-size:1.3rem;"><b>College Resume Template</b></p>
+                        <p style="font-size:0.95rem">No experience? No problem!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-3 pb-5">
+        <a class="btn btn-primary" href="Resume_Templates.html" role="button" style="font-size:1.2rem"><b>Discover More Resume Templates</b></a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid" style="margin-top:3rem">
+        <p class="text-center" style="font-size:2.4rem"><b>Build Your Resume Fast and Easy.</b></p>
+        <p class="lead text-center mt-5"
+            style="font-size:1.3rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-left:5rem;margin-right:5rem">
+            ResumeBuild is lightning fast. There's no software to download. No multi-part sign-up form. No long-winded
+            tutorials. Just a straightforward process.
+        </p>
+    </div>
+
+    <div class="container-fluid" style="margin-top:3rem">
+        <div class="row d-flex mt-3 mb-3 ms-3 me-3">
+            <div class="col-md-6 text-center" data-aos="fade-right" data-aos-delay="100" data-aos-duration="2000"
+                data-aos-once="true">
+                <div style="margin-top:4rem;">
+                    <b class="fs-1"><b>1. Pick a Template</b></b>
+                    <div class="mt-3 ms-5 me-5"
+                        style="font-size:1.5rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        Don't sabotage your job search before it has even begun. Choose from our ATS-friendly,
+                        hand-crafted resume templates
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2000"
+                data-aos-once="true">
+                <img src="images/Screenshot (4).png" class="img-fluid" style="height: 400px !important;">
+            </div>
+        </div>
+
+        <div class="row d-flex mt-5 mb-3 ms-3 me-3">
+
+            <div class="col-md-6 text-center" data-aos="fade-right" data-aos-delay="50" data-aos-duration="2000"
+                data-aos-once="true">
+                <img src="images/Screenshot (2).png" style="height: 400px !important;" class="img-fluid">
+            </div>
+            <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2000"
+                data-aos-once="true">
+                <div style="margin-top:4rem">
+                    <b class="fs-1"><b>2. Customize Your Layout</b></b>
+                    <div class="mt-3 ms-5 me-5"
+                        style="font-size:1.5rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        Make the resume template truly your own. Customize the layout based on your experience level.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex mt-5 mb-3 ms-3 me-3">
+
+            <div class="col-md-6 text-center" data-aos="fade-right" data-aos-delay="50" data-aos-duration="2000"
+                data-aos-once="true">
+                <div style="margin-top:4rem">
+                    <b class="fs-1"><b>3. Fill in the Blanks</b></b>
+                    <div class="mt-3 ms-5 me-5"
+                        style="font-size:1.5rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        Fill in your resume information, let our AI content analyzer do its job, and see your resume
+                        changes dynamically in real time.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2000"
+                data-aos-once="true">
+                <img src="images/Screenshot (1).png" style="height: 400px !important;" class="img-fluid">
+            </div>
+
+        </div>
+
+        <div class="row d-flex mt-5 mb-3 ms-3 me-3">
+
+            <div class="col-md-6 text-center" data-aos="fade-right" data-aos-delay="50" data-aos-duration="2000"
+                data-aos-once="true">
+                <img src="images/Screenshot (24).png" style="height: 400px !important;" class="img-fluid">
+            </div>
+            <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2000"
+                data-aos-once="true">
+                <div style="margin-top:4rem">
+                    <b class="fs-1"><b>4. Hit 'Download!'</b></b>
+                    <div class="mt-3 ms-5 me-5"
+                        style="font-size:1.3rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        And yes, it's free! We don't hit you with a paywall once you've completed your resume in the
+                        Basic Account. If you use any of our premium features, the software will let you know about it.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid" style="margin-top:5rem">
+        <div class="container">
+            <p class="text-center mb-5" style="font-size:2.4rem"><b>Why Choose Our Resume Builder?</b></p>
+            <div class="row ms-4 me-4">
+                <div class="col-md-6 d-flex">
+
+                    <div class="row ms-2 me-2">
+                        <div class="col-lg-4 mt-1 mb-1 text-center" data-aos="fade-down" data-aos-delay="100"
+                            data-aos-duration="2000" data-aos-once="true">
+                            <img src="images/ro_files/why-0@2x.png" class="ms-1" style="height:120px" />
+                        </div>
+                        <div class="col-md mt-1 mb-1 ps-2">
+                            <b style="font-size:30px;">Free AND Premium</b>
+                            <p class="mt-1" style="text-align:justify">We offer both free and premium features. Want
+                                your resume to have that extra punch? Upgrade to Premium. On a budget? That's OK too -
+                                you can use our resume buider completely free of charge.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div class="row ms-2 me-2">
+                        <div class="col-lg-4  mt-1 mb-1  text-center" data-aos="fade-down" data-aos-delay="100"
+                            data-aos-duration="2000" data-aos-once="true">
+                            <img src="images/ro_files/why-1@2x.png" class="ms-1" style="height:120px" />
+
+                        </div>
+                        <div class="col-md mt-1 mb-1 ps-2">
+                            <b style="font-size:30px;">Creative and Professional Resume Templates</b>
+                            <p class="mt-1" style="text-align:justify">Whatever resume template you're looking for,
+                                we've got it! Whether it's a classic black-and-white template, or something a bit more
+                                outside the box, we have what you need!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ms-4 me-4">
+                <div class="col-md-6 d-flex">
+                    <div class="row ms-2 me-2">
+                        <div class="col-lg-4 mt-1 mb-1 text-center" data-aos="fade-down" data-aos-delay="100"
+                            data-aos-duration="2000" data-aos-once="true">
+                            <img src="images/ro_files/why-2@2x.png" class="ms-1" style="height:120px" />
+                        </div>
+                        <div class="col-md mt-1 mb-1 ps-2">
+                            <b style="font-size:30px;">NO Hidden Fees</b>
+                            <p class="mt-1" style="text-align:justify">With Novorésumé, you won’t spend hours working on
+                                your resume, just to be hit with a hidden paywall. Our resume builder will notify you if
+                                you’re using any of our premium features in advance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div class="row ms-2 me-2">
+                        <div class="col-lg-4 mt-1 mb-1  text-center" data-aos="fade-down" data-aos-delay="100"
+                            data-aos-duration="2000" data-aos-once="true">
+                            <img src="images/ro_files/why-3@2x.png" class="ms-1" style="height:120px" />
+
+                        </div>
+                        <div class="col-md mt-1 mb-1 ps-2">
+                            <b style="font-size:30px;">ATS-Friendly</b>
+                            <p class="mt-1" style="text-align:justify">Our resume templates are ATS-friendly. It means
+                                your resume won’t automatically be rejected because an ATS can’t read it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ms-4 me-4">
+                <div class="col-md-6 d-flex">
+
+                    <div class="row ms-2 me-2">
+                        <div class="col-lg-4 mt-1 mb-1 text-center" data-aos="fade-down" data-aos-delay="100"
+                            data-aos-duration="2000" data-aos-once="true">
+                            <img src="images/ro_files/why-4@2x.png" class="ms-1" style="height:120px" />
+                        </div>
+                        <div class="col-md  mt-1 mb-1 ps-2">
+                            <b style="font-size:30px;">Live Content Feedback</b>
+                            <p class="mt-1" style="text-align:justify">Our CV builder provides real-time feedback on
+                                your resume content, ensuring that your resume reaches its full potential!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div class="row ms-2 me-2">
+                        <div class="col-lg-4 mt-1 mb-1  text-center" data-aos="fade-down" data-aos-delay="100"
+                            data-aos-duration="2000" data-aos-once="true">
+                            <img src="images/ro_files/why-5@2x.png" class="ms-1" style="height:130px" />
+
+                        </div>
+                        <div class="col-md mt-1 mb-1 ps-2">
+                            <b style="font-size:30px;">Edit Your Resume in Real Time</b>
+                            <p class="mt-1" style="text-align:justify">As you edit your resume with our builder, you’ll
+                                immediately see the changes applied to your document.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid" style="margin-top:4rem">
+        <div class="container text-center">
+            <p style="font-size:2.4rem"><b>Resume Builder FAQ</b></p>
+        </div>
+        <div class="row me-5 ms-5" style="padding-top:3rem">
+            <div class="col-md-3 ">
+                <div class="container mt-3 mb-3  text-center" data-aos="fade-down" data-aos-delay="100"
+                    data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/ro_files/faq0@2x.png" style="height:200px" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <p style="font-size:2rem"><b>Why should I use a resume builder?</b></p>
+                <p style="text-align:justify">Using a resume builder makes the process of creating a resume
+                    significantly faster and easier. Ever tried building your resume with Word?</p>
+                <p style="text-align:justify">The whole process is a huge pain – you make a TINY change to your resume,
+                    and the entire resume layout gets completely messed up.</p>
+                <p style="text-align:justify">With a resume builder, you don’t have to worry about the nitty gritty of
+                    resume creation, like font selection, layout, formatting, etc.</p>
+                <p style="text-align:justify">All you have to do is pick a resume template, fill it in, and then you’re
+                    ready to start applying for jobs!</p>
+            </div>
+            <div class="col-md-3 "></div>
+        </div>
+
+        <div class="row me-5 ms-5 mt-4">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <p style="font-size:2rem"><b>What is the best resume builder?</b></p>
+                <p style="text-align:justify">Over the past 7 years, we’ve been working hard to make Novorésumé the best
+                    resume builder out there.</p>
+                <p style="text-align:justify">And we’d say we succeeded! Here’s what sets us apart from the rest of the
+                    competition:</p>
+                <div>
+                    <ul>
+                        <li style="font-size:13px">
+                            <p><b>Easy to Use </b>- Our builder is very easy to use, even if you're not too
+                                tech-friendly.</p>
+                        </li>
+                        <li style="font-size:13px">
+                            <p><b>Get Started in under 5 Minutes </b>- Just pick one of our resume templates, and you're
+                                good to go!</p>
+                        </li>
+                        <li style="font-size:13px">
+                            <p><b>It's 100% free </b>- Some resume builders out there pretend to be free… and then they
+                                hit you with a paywall once you’re done writing your resume! We don’t do that. Our
+                                builder will instantly notify you if you’re using any of our premium features.</p>
+                        </li>
+                        <li style="font-size:13px">
+                            <p><b>Cover Letter Builder </b>-If you’re using Novorésumé Premium, you gain access to our
+                                cover letter builder for free (including matching cover letter templates).</p>
+                        </li>
+                        <li style="font-size:13px">
+                            <p><b>Tons of Customization and Design Options </b>- Our builder offers a ton of
+                                customization. You can make changes to the layout, color schemes, and much more.</p>
+                        </li>
+                        <li style="font-size:13px">
+                            <p><b>ATS-Friendly Resume Templates </b>- Our resume templates are built on top of some of
+                                the most popular applicant tracking systems out there. Meaning, your resume won't
+                                automatically get rejected by any ATS.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100"
+                    data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/ro_files/faq1@2x.png" style="height:200px" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row me-5 ms-5 mt-4">
+            <div class="col-md-3">
+                <div class="container mt-3 mb-3  text-center" data-aos="fade-down" data-aos-delay="100"
+                    data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/ro_files/faq2@2x.png" style="height:200px" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p style="font-size:2rem"><b>Is this a completely free resume builder?</b></p>
+                <p style="text-align:justify">Yes, ResumeBuild is a 100% free resume builder.</p>
+                <p style="text-align:justify">If you’re on a budget, you can use it to create your resume completely
+                    free of charge. And no, unlike some other resume builders out there, we don’t hit you with a paywall
+                    once you’ve completed your resume.</p>
+                <p style="text-align:justify">If you use any of our premium features, the software will let you know
+                    about it. It will then ask if you did it accidentally, or if you would like to upgrade to Novorésumé
+                    Premium. You're in control!</p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row me-5 ms-5 mt-4">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <p style="font-size:2rem"><b>What is a resume?</b></p>
+                <p style="text-align:justify">A resume (also known as a CV, or curriculum vitae) is a 1-2 page document
+                    that summarizes your work experience and career history.</p>
+                <p style="text-align:justify">It usually includes information about the following :
+                <ul>
+                    <li style="font-size:13px">Your work history</li>
+                    <li style="font-size:13px">Educational background</li>
+                    <li style="font-size:13px">Achievements</li>
+                    <li style="font-size:13px">Contact information</li>
+                    <li style="font-size:13px">Resume summary or resume objective</li>
+                </ul>
+                </p>
+
+            </div>
+            <div class="col-md-3">
+                <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100"
+                    data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/ro_files/faq3@2x.png" style="height:200px" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row me-5 ms-5 mt-4">
+            <div class="col-md-3">
+                <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100"
+                    data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/ro_files/faq4@2x.png" style="height:200px" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p style="font-size:2rem"><b>What's the difference between a CV and a resume?</b></p>
+                <p style="text-align:justify">In the EU, the words "CV" and "resume" are used interchangeably</p>
+                <p style="text-align:justify">In the United States, however, a resume is a document you use to apply for
+                    jobs, while a CV is mainly used by academics.</p>
+                <p style="text-align:justify">Want to learn more? Check out our article on the differences between CVs
+                    and resumes.</p>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row ms-5 me-5 mt-4">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <p style="font-size:2rem"><b>How can I create my resume?</b></p>
+                <p style="text-align:justify">Making a resume with ResumeBuild is very straightforward.</p>
+                <p style="text-align:justify">Just pick one of our professional resume templates.</p>
+                <p style="text-align:justify">Then, you’ll be forwarded to our resume builder, where all you have to do
+                    is fill in your resume content!</p>
+            </div>
+            <div class="col-md-3">
+                <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100"
+                    data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/ro_files/faq5@2x.png" style="height:200px" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row ms-5 me-5 mt-4">
+            <div class="col-md-3">
+                <div class="container mt-3 mb-3 text-center" data-aos="fade-down" data-aos-delay="100"
+                    data-aos-duration="2000" data-aos-once="true">
+                    <img src="images/ro_files/faq6@2x.png" style="height:200px" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p style="font-size:2rem"><b>What should a resume include?</b></p>
+                <p style="text-align:justify">The must-have contents in your resume include the all given following
+                    sections :
+                <ul>
+                    <li style="font-size:13px">Work Experience</li>
+                    <li style="font-size:13px">Educational Background</li>
+                    <li style="font-size:13px">Contact Information</li>
+                    <li style="font-size:13px">Resume summary or Resume Objective</li>
+                </ul>
+                </p>
+                <p>The optional ones are :
+                <ul>
+                    <li style="font-size:13px">Hobbies & Interests</li>
+                    <li style="font-size:13px">Skills</li>
+                    <li style="font-size:13px">Volunteering Experience</li>
+                </ul>
+                </p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="body1 container-fluid mt-5">
+            <div class="container" style="padding-top:280px">
+                <div class="text-center">
+                    <p style="font-size:40px;color:rgb(20, 24, 16)"><b>Ready to Jump-Start Your Career</b></p>
+                    <!-- <button type="button" class="btn btn-danger mt-3 btn-lg">Build My Resume</button> -->
+                    <a class="btn btn-danger mt-3 btn-lg" href="choose.html" role="button"><b>Build My Resume</b></a>
+
+                    <p style="font-weight:500">No credit card required</p>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer fixed-buttom">
+            <div class="container text-center">
+                <!-- <p>&copy; 2024 Resume Builder. All rights reserved.</p>  -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div class="p3">Resources</div>
+                            <p class="p2">Pricing</p>
+                            <p class="p2">Resume Builder</p>
+                            <p class="p2">Resume Formatting</p>
+                            <p class="p2">Resume Writing</p>
+                            <p class="p2">Resume Writing Guide</p>
+                            <p class="p2">Professional Resume</p>
+                            <p class="p2">Entry-level Resume</p>
+                            <p class="p2">Student Resume</p>
+                            <p class="p2">Career Blog</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="">
+                        <div class="text-center">
+                            <div class="p3">Support</div>
+                            <p class="p2">Privacy Policy</p>
+                            <p class="p2">Cookie Policy</p>
+                            <p class="p2">Terms and conditions</p>
+                            <p class="p2">Refund/Cancellations</p>
+                            <p class="p2">Contact us</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="">
+                        <div class="d-flex justify-content-center">
+                            <div><i class="fa-solid fa-globe fa-lg" style="color: #fcfcfc;"></i></div>
+                            <div style="font-weight:bold;font-size:18px;margin:0 6px">Languages</div>
+                        </div>
+                        <div class="text-center">
+                            <p class="p1">English</p>
+                            <p class="p1">Italiano</p>
+                            <p class="p1">Francais</p>
+                            <p class="p1">Espanol</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center" style="">
+                        <div style="font-size:14px">WorkSimpli Software, LLC <br>1225 Ave Ponce de Leon, Suite 1001
+                            <br>San Juan, PR, USA 00907 <br>Email: support@resumebuild.com</div>
+                        <div class="mt-2">
+                            <img src="images/icon.png" height="50px">
+                        </div>
+                        <div style="margin-top:2px">
+                            <img src="images/master.png" height="23px" width="200px" class="mt-3">
+                        </div>
+                        <div class="mt-2" style="font-size:14px">&copy; 2024 WorkSimpli Software, LLC.<br>
+                            a subsidiary of LifeMD Inc.<br>
+                            All rights reserved.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="div1 mx-auto d-block">
+                                <img src="images/image-1.svg" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="div1 mx-auto d-block">
+                                <img src="images/image-2.svg" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="div1 mx-auto d-block"><img src="images/image-3.svg" /></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="div1 mx-auto d-block"><img src="images/ResumeBuilt.svg" /></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="div1 mx-auto d-block"> <img src="images/image-4.svg" /></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="div1 mx-auto d-block"><img src="images/image-5.svg" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+          
+    const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+        
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+        </script>
+</body>
+
+</html>
